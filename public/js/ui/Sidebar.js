@@ -29,6 +29,34 @@ class Sidebar {
    * выходу устанавливает App.setState( 'init' )
    * */
   static initAuthLinks() {
+    const registerBtn = document.querySelector('.menu-item_register');
+    const loginBtn = document.querySelector('.menu-item_login');
+    const logoutBtn = document.querySelector('.menu-item_logout');
+    
+    registerBtn.addEventListener('click', () => {
+      const regModal = App.getModal('register');
+      regModal.registerEvents();
+      regModal.open();
+    });
 
+    loginBtn.addEventListener('click', () => {
+      const loginModal = App.getModal('login');
+      loginModal.registerEvents();
+      loginModal.open();
+    });
+
+    logoutBtn.addEventListener('click', () => {
+      const callback = (err, response) => {
+        if (response.success) {
+          App.setState( 'init' );
+        } else {
+          console.log(err);
+        }
+      };
+      User.logout(callback);
+    });
   }
 }
+
+
+//                                         Сделаны 0 из 2. Не доделан callback в initAuthLinks, не начат initToggleButton
