@@ -12,11 +12,19 @@ class RegisterForm extends AsyncForm {
   onSubmit(data) {
     const callback = (err, response) => {
       if (err) {
-        console.log(err);
+        const messageBlock = this.element.closest('.modal-body').querySelector('.infoMessage');
+        messageBlock.style.visibility = 'visible';
+        messageBlock.style.color = 'red';
+        messageBlock.textContent = err;
+        setTimeout(() => {
+          messageBlock.style.visibility = 'hidden';
+          messageBlock.style.color = 'black';
+        }, 5000);
       } else {
         this.element.reset();
         App.setState( 'user-logged' );
-        App.modals.login.close();
+        App.modals.register.close();
+        User.setCurrent({id: response.user.id, name: response.user.name});
       }
     };
     User.register(data, callback);

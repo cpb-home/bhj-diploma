@@ -72,7 +72,13 @@ class User {
    * User.setCurrent.
    * */
   static register(data, callback) {
-
+    createRequest({
+      url: this.URL + '/register',
+      method: 'POST',
+      responseType: 'json',
+      data,
+      callback
+    });
   }
 
   /**
@@ -89,18 +95,3 @@ class User {
     User.unsetCurrent();
   }
 }
-
-
-/*
-const formData = new FormData();
-formData.append('email', 'demo@demo');
-formData.append('password', 'demo');
-
-cal = (err, response) => {
-  if (response) {console.log(response);}
-  if (err){console.log(err);}
-}
-
-const y = new User;
-const user = User.login(formData, cal);
-*/

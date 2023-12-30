@@ -80,3 +80,7 @@
 .transaction__controls {
   line-height: 70px;
 }
+
+.infoMessage {
+  visibility: hidden;
+}

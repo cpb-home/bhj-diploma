@@ -21,18 +21,3 @@ const createRequest = (options = {}) => {
     console.error(er);
   }
 };
-/*
-const formData = new FormData();
-formData.append('email', 'demo@demo');
-formData.append('password', 'demo');
-const options = {
-  url: '/user/login',
-  method: 'POST',
-  data: formData,
-  callback: (err, response) => {
-    if (response) {console.log(response);}
-    if (err){console.log(err);}
-}
-}
-createRequest(options);
-*/
