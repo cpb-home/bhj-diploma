@@ -18,7 +18,13 @@ class Sidebar {
    * при нажатии на кнопку .sidebar-toggle
    * */
   static initToggleButton() {
+    const btn = document.querySelector('.sidebar-toggle');
+    const body = document.querySelector('body');
 
+    btn.addEventListener('click', () => {
+      body.classList.toggle('sidebar-open');
+      body.classList.toggle('sidebar-collapse');
+    });
   }
 
   /**
@@ -57,6 +63,3 @@ class Sidebar {
     });
   }
 }
-
-
-//                                         Сделаны 0 из 2. Не доделан callback в initAuthLinks, не начат initToggleButton

@@ -4,7 +4,7 @@
  * */
 class Entity {
   constructor() {
-    this.URL = 'as';
+    this.URL = '';
   }
   /**
    * Запрашивает с сервера список данных.
@@ -18,6 +18,7 @@ class Entity {
       method: 'GET',
       url: this.Url
     };
+    createRequest(options);
   }
 
   /**
@@ -26,7 +27,13 @@ class Entity {
    * что наследуется от Entity)
    * */
   static create(data, callback) {
-
+    const options = {
+      data,
+      callback,
+      method: 'PUT',
+      url: this.Url
+    };
+    createRequest(options);
   }
 
   /**
@@ -34,6 +41,12 @@ class Entity {
    * (в зависимости от того, что наследуется от Entity)
    * */
   static remove(data, callback ) {
-
+    const options = {
+      data,
+      callback,
+      method: 'DELETE',
+      url: this.Url
+    };
+    createRequest(options);
   }
 }

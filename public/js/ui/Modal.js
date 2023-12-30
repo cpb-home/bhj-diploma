@@ -54,8 +54,3 @@ class Modal {
     this.element.style.display = 'none';
   }
 }
-
-/*
-let l = new Modal(document.getElementById('modal-login'));
-l.open();
-*/
