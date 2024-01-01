@@ -5,7 +5,7 @@
 const createRequest = (options = {}) => {
   
   const xhr = new XMLHttpRequest;
-  xhr.responseType = options.responseType;
+  xhr.responseType = 'json';
 
   try {
     xhr.open( options.method, options.url );

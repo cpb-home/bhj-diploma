@@ -12,7 +12,6 @@ class User {
    * */
   static setCurrent(user) {
     window.localStorage.setItem('user', JSON.stringify(user));
-    document.querySelector('.user-name').textContent = user.name;
   }
 
   /**
@@ -21,7 +20,6 @@ class User {
    * */
   static unsetCurrent() {
     window.localStorage.removeItem('user');
-    document.querySelector('.user-name').textContent = "";
   }
 
   /**
@@ -42,7 +40,6 @@ class User {
       const options = {
         method: 'GET',
         url: this.URL + '/current?id=' + LS.id,
-        responseType: 'json',
         callback
       };
       createRequest(options);
@@ -59,7 +56,6 @@ class User {
     createRequest({
       url: this.URL + '/login',
       method: 'POST',
-      responseType: 'json',
       data,
       callback
     });
@@ -75,7 +71,6 @@ class User {
     createRequest({
       url: this.URL + '/register',
       method: 'POST',
-      responseType: 'json',
       data,
       callback
     });
@@ -89,7 +84,6 @@ class User {
     createRequest({
       url: this.URL + '/logout',
       method: 'POST',
-      responseType: 'json',
       callback
     });
     User.unsetCurrent();
