@@ -16,6 +16,7 @@ class Modal {
       console.log(new Error('Ошибка Modal 1: такого элемента не существует.'));
     } else {
       this.element = element;
+      this.registerEvents();
     }
   }
 

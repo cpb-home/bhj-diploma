@@ -16,6 +16,7 @@ class TransactionsWidget {
       throw new Error('Не получен элемент');
     } else {
       this.element = element;
+      this.registerEvents();
     }
   }
   /**
@@ -25,6 +26,10 @@ class TransactionsWidget {
    * экземпляра окна
    * */
   registerEvents() {
+    const incomeBtn = document.querySelector('.create-income-button');
+    const expenseBtn = document.querySelector('.create-expense-button');
 
+    incomeBtn.addEventListener('click', () => App.getModal('newIncome').open());
+    expenseBtn.addEventListener('click', () => App.getModal('newExpense').open());
   }
 }

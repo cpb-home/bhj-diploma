@@ -28,6 +28,11 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "аиа",
+      "user_id": "30nmu5qklqsb5wyq",
+      "id": "30nmu7o0lqwo577n"
     }
   ],
   "transactions": [
@@ -165,6 +170,51 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "30nmu4uklqwkbxb3",
+      "type": "income",
+      "name": "пиваыипс",
+      "sum": 654,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2024-01-02T16:27:33.086Z"
+    },
+    {
+      "id": "30nmuadwlqwleh0z",
+      "type": "income",
+      "name": "еп4уп",
+      "sum": 35435,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2024-01-02T16:57:31.570Z"
+    },
+    {
+      "id": "30nmu4b4lqwleu4b",
+      "type": "expense",
+      "name": "пппаи",
+      "sum": 45334,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2024-01-02T16:57:48.538Z"
+    },
+    {
+      "id": "30nmu87clqwo5eh5",
+      "type": "income",
+      "name": "вапыв",
+      "sum": 5434534,
+      "account_id": "30nmu7o0lqwo577n",
+      "user_id": "30nmu5qklqsb5wyq",
+      "created_at": "2024-01-02T18:14:27.208Z"
+    },
+    {
+      "id": "30nmu4j0lqwo5n9t",
+      "type": "expense",
+      "name": "керевамип",
+      "sum": 54,
+      "account_id": "30nmu7o0lqwo577n",
+      "user_id": "30nmu5qklqsb5wyq",
+      "created_at": "2024-01-02T18:14:38.608Z"
     }
   ]
 }

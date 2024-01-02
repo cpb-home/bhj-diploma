@@ -34,9 +34,7 @@ class AccountsWidget {
     const createBtn = document.querySelector('.create-account');
     const accountsList = document.querySelectorAll('.account');
 
-    createBtn.addEventListener('click', () => {
-      console.log('create');
-    });
+    createBtn.addEventListener('click', () => App.getModal('createAccount').open());
 
     accountsList.forEach(account => {
       account.addEventListener('click', () => {
@@ -93,6 +91,7 @@ class AccountsWidget {
     accounts.forEach(account => account.classList.remove('active'));
     element.classList.add('active');
     App.showPage( 'transactions', { account_id: element.dataset.id });
+    App.update();
   }
 
   /**

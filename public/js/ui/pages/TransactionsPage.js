@@ -23,8 +23,7 @@ class TransactionsPage {
    * Вызывает метод render для отрисовки страницы
    * */
   update() {
-    //options = {};
-    //this.render(options);
+    this.render(this.lastOptions);
   }
 
   /**
@@ -34,7 +33,14 @@ class TransactionsPage {
    * TransactionsPage.removeAccount соответственно
    * */
   registerEvents() {
+    const deleteAccountBtn = this.element.querySelector('.remove-account');
+    const deleteTransactionBtns = this.element.querySelectorAll('.transaction__remove');
 
+    deleteAccountBtn.addEventListener('click', () => this.removeAccount());
+
+    deleteTransactionBtns.forEach(btn => {
+      btn.addEventListener('click', () => this.removeTransaction(btn.dataset.id));
+    })
   }
 
   /**
@@ -47,7 +53,21 @@ class TransactionsPage {
    * для обновления приложения
    * */
   removeAccount() {
-
+    if (confirm('Вы точно хотите удалить текущий аккаунт?\nЭто действие невозможно будет отменить.')) {
+      const callback = (err, response) => {
+        if (err) {
+          console.log(err);
+        } else {
+          App.updateWidgets();
+          App.update();
+          App.updateForms();
+        }
+      };
+      const formDdata = new FormData();
+      formDdata.append('id', this.lastOptions.account_id);
+      Account.remove(formDdata, callback);
+      this.clear();
+    }
   }
 
   /**
@@ -57,7 +77,19 @@ class TransactionsPage {
    * либо обновляйте текущую страницу (метод update) и виджет со счетами
    * */
   removeTransaction( id ) {
-
+    if (confirm('Вы точно хотите удалить данную операцию?\nЭто действие невозможно будет отменить.')) {
+      const callback = (err, response) => {
+        if (err) {
+          console.log(err);
+        } else {
+          this.update();
+          App.update();
+        }
+      };
+      const formDdata = new FormData();
+      formDdata.append('id', id);
+      Transaction.remove(formDdata, callback);
+    }
   }
 
   /**
@@ -162,5 +194,7 @@ class TransactionsPage {
     const contentSection = this.element.querySelector('.content');
     contentSection.textContent = '';
     data.forEach(item => contentSection.insertAdjacentHTML('BeforeEnd', this.getTransactionHTML(item)));
+    this.registerEvents();
   }
+  
 }
