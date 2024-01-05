@@ -59,7 +59,6 @@ class TransactionsPage {
           throw new Error(err);
         } else {
           App.updateWidgets();
-          App.update();
           App.updateForms();
         }
       };
@@ -194,7 +193,7 @@ class TransactionsPage {
     const contentSection = this.element.querySelector('.content');
     contentSection.textContent = '';
     data.forEach(item => contentSection.insertAdjacentHTML('BeforeEnd', this.getTransactionHTML(item)));
-    this.registerEvents();
+    //this.registerEvents();
   }
   
 }
