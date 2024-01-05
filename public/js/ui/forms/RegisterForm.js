@@ -12,14 +12,7 @@ class RegisterForm extends AsyncForm {
   onSubmit(data) {
     const callback = (err, response) => {
       if (err) {
-        const messageBlock = this.element.closest('.modal-body').querySelector('.infoMessage');
-        messageBlock.style.visibility = 'visible';
-        messageBlock.style.color = 'red';
-        messageBlock.textContent = err;
-        setTimeout(() => {
-          messageBlock.style.visibility = 'hidden';
-          messageBlock.style.color = 'black';
-        }, 5000);
+        App.modalErrorMessage(this.element, err);
       } else {
         this.element.reset();
         App.setState( 'user-logged' );

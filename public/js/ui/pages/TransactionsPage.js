@@ -56,7 +56,7 @@ class TransactionsPage {
     if (confirm('Вы точно хотите удалить текущий аккаунт?\nЭто действие невозможно будет отменить.')) {
       const callback = (err, response) => {
         if (err) {
-          console.log(err);
+          throw new Error(err);
         } else {
           App.updateWidgets();
           App.update();
@@ -80,7 +80,7 @@ class TransactionsPage {
     if (confirm('Вы точно хотите удалить данную операцию?\nЭто действие невозможно будет отменить.')) {
       const callback = (err, response) => {
         if (err) {
-          console.log(err);
+          throw new Error(err);
         } else {
           this.update();
           App.update();
@@ -103,12 +103,12 @@ class TransactionsPage {
       this.lastOptions = options;
       const callback = (err, response) => {
         if (err) {
-          console.log(err);
+          throw new Error(err);
         } else {
           this.renderTitle(response.data.name);
           const transactionCallback = (error, resp) => {
             if (error) {
-              console.log(error);
+              throw new Error(error);
             } else {
               this.renderTransactions(resp.data);
             }

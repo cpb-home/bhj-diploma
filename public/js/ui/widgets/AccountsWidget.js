@@ -58,7 +58,7 @@ class AccountsWidget {
     if (user) {
       const callback = (err, response) => {
         if (err) {
-          console.log(err);
+          throw new Error(err);
         } else {
           this.clear();
           this.renderItem(response.data);

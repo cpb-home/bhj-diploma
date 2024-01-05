@@ -13,7 +13,7 @@ class Modal {
    * */
   constructor(element){
     if (!element) {
-      console.log(new Error('Ошибка Modal 1: такого элемента не существует.'));
+      throw new Error('Ошибка Modal 1: такого элемента не существует.');
     } else {
       this.element = element;
       this.registerEvents();

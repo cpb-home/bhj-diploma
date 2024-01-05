@@ -11,14 +11,7 @@ class CreateAccountForm extends AsyncForm {
   onSubmit(data) {
     const callback = (err, response) => {
       if (err) {
-        const messageBlock = this.element.closest('.modal-body').querySelector('.infoMessage');
-        messageBlock.style.visibility = 'visible';
-        messageBlock.style.color = 'red';
-        messageBlock.textContent = err;
-        setTimeout(() => {
-          messageBlock.style.visibility = 'hidden';
-          messageBlock.style.color = 'black';
-        }, 5000);
+        App.modalErrorMessage(this.element, err);
       } else {
         App.update();
         this.element.reset();

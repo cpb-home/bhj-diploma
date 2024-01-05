@@ -18,16 +18,14 @@ class CreateTransactionForm extends AsyncForm {
   renderAccountsList() {
     const callback = (err, response) => {
       if (err) {
-        console.log(err);
+        throw new Error(err);
       } else {
-        const formList = this.element.querySelector('.accounts-select');
-        formList.textContent = '';
-        response.data.forEach(data => {
-          const option = document.createElement('option');
-          option.value = data.id;
-          option.textContent = data.name;
-          formList.append(option);
-        })
+        const formList = this.element.querySelector('.accounts-select'); 
+        
+        formList.innerHTML = response.data.reduce((acc, e) => {
+          let currentRow = '<option value="' + e.id + '">' + e.name + '</option>';
+          return acc + currentRow;
+        }, '');
       }
     }
     Account.list('', callback);
@@ -42,14 +40,7 @@ class CreateTransactionForm extends AsyncForm {
   onSubmit(data) {
     const callback = (err, response) => {
       if (err) {
-        const messageBlock = this.element.closest('.modal-body').querySelector('.infoMessage');
-        messageBlock.style.visibility = 'visible';
-        messageBlock.style.color = 'red';
-        messageBlock.textContent = err;
-        setTimeout(() => {
-          messageBlock.style.visibility = 'hidden';
-          messageBlock.style.color = 'black';
-        }, 5000);
+        App.modalErrorMessage(this.element, err);
       } else {
         App.update();
         this.element.reset();

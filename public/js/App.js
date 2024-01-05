@@ -217,4 +217,15 @@ class App {
     this.getForm("createIncome").renderAccountsList();
     this.getForm("createExpense").renderAccountsList();
   }
+
+  static modalErrorMessage(element, err) {
+    const messageBlock = element.closest('.modal-body').querySelector('.infoMessage');
+    messageBlock.style.visibility = 'visible';
+    messageBlock.style.color = 'red';
+    messageBlock.textContent = err;
+    setTimeout(() => {
+      messageBlock.style.visibility = 'hidden';
+      messageBlock.style.color = 'black';
+    }, 5000);
+  }
 }

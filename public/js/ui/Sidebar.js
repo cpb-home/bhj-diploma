@@ -56,7 +56,7 @@ class Sidebar {
         if (response.success) {
           App.setState( 'init' );
         } else {
-          console.log(err);
+          throw new Error(err);
         }
       };
       User.logout(callback);
